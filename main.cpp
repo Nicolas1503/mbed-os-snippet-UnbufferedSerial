@@ -5,8 +5,13 @@
 
 #include "mbed.h"
 
+#define LED1 PA_1
+#define USBTX PB_6
+#define USBRX PB_7
+
+
 // Create a DigitalOutput object to toggle an LED whenever data is received.
-static DigitalOut led(LED1);
+DigitalOut led(LED1);
 
 // Create a UnbufferedSerial object with a default baud rate.
 UnbufferedSerial serial_port(USBTX, USBRX);
@@ -30,7 +35,7 @@ int main(void)
             //Toggle the LED
             led = !led;
             //Send a # back to the terminal
-            serial_port.write("#", 1);
+            serial_port.write("R", 1);
         }
     }
 }
